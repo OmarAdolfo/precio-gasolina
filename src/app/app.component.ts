@@ -10,11 +10,12 @@ export class AppComponent implements OnInit {
 
   calculadoraForm: FormGroup;
   resultado: string;
+  expRegValidatePrice = /(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$/;
 
   ngOnInit(): void {
     this.calculadoraForm = new FormGroup({
-      dineroapagar: new FormControl('', Validators.required),
-      preciogasolina: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+([.][0-9][0-9]?)?$')]),
+      dineroapagar: new FormControl('', [Validators.required, Validators.pattern(this.expRegValidatePrice)]),
+      preciogasolina: new FormControl('', [Validators.required, Validators.pattern(this.expRegValidatePrice)]),
     });
   }
 
