@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.calculadoraForm = new FormGroup({
       dineroapagar: new FormControl('', [Validators.required, Validators.pattern(this.expRegValidatePrice)]),
-      preciogasolina: new FormControl('', [Validators.required, Validators.pattern(this.expRegValidatePrice)]),
+      preciogasolina: new FormControl('', [Validators.required, Validators.pattern("^[0-9]+([.][0-9]+)?$")]),
     });
   }
 
