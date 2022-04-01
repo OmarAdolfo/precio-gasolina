@@ -1,43 +1,51 @@
 <div class="container mt-5">
-  <div class="form-container">
-    <form [formGroup]="calculadoraForm" (ngSubmit)="calcularprecio()">
-      <div class="form-group">
-        <label for="dineroapagar" class="form-label">
-          <p class="text-top">¿Cuánto dinero quieres gastar?</p>
-        </label>
-        <input type="number" class="form-control" id="dineroapagar" formControlName="dineroapagar" required>
-        <div
-          *ngIf="calculadoraForm.controls.dineroapagar.invalid && (calculadoraForm.controls.dineroapagar.dirty || calculadoraForm.controls.dineroapagar.touched)"
-          class="alert alert-danger mt-2">
-          <div *ngIf="calculadoraForm.controls.dineroapagar.errors.required">
-            El dinero que usted desea pagar es obligatorio
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Título</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      Esta herramienta te permite
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="calculadoraForm" (ngSubmit)="calcularprecio()">
+        <div class="form-group">
+          <label for="dineroapagar" class="form-label">¿Cuánto dinero quieres gastar?</label>
+          <input type="number" class="form-control" id="dineroapagar" formControlName="dineroapagar" required>
+          <div
+            *ngIf="calculadoraForm.controls.dineroapagar.invalid && (calculadoraForm.controls.dineroapagar.dirty || calculadoraForm.controls.dineroapagar.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="calculadoraForm.controls.dineroapagar.errors.required">
+              El dinero que usted desea pagar es obligatorio
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group mt-3">
-        <label for="preciogasolina" class="form-label">
-          <p>Precio del litro</p>
-        </label>
-        <input type="text" class="form-control" id="preciogasolina" formControlName="preciogasolina" required>
-        <div
-          *ngIf="calculadoraForm.controls.preciogasolina.invalid && (calculadoraForm.controls.preciogasolina.dirty || calculadoraForm.controls.preciogasolina.touched)"
-          class="alert alert-danger mt-2">
-          <div *ngIf="calculadoraForm.controls.preciogasolina.errors.required">
-            El precio de la gasolina es obligatorio
-          </div>
-          <div *ngIf="calculadoraForm.controls.preciogasolina.errors.pattern">
-            El precio de la gasolina debe cumplir con el formato X.YY. Ejemplo: 4.35
+        <div class="form-group mt-3">
+          <label for="preciogasolina" class="form-label">Precio del litro</label>
+          <input type="text" class="form-control" id="preciogasolina" formControlName="preciogasolina" required>
+          <div
+            *ngIf="calculadoraForm.controls.preciogasolina.invalid && (calculadoraForm.controls.preciogasolina.dirty || calculadoraForm.controls.preciogasolina.touched)"
+            class="alert alert-danger mt-2">
+            <div *ngIf="calculadoraForm.controls.preciogasolina.errors.required">
+              El precio de la gasolina es obligatorio
+            </div>
+            <div *ngIf="calculadoraForm.controls.preciogasolina.errors.pattern">
+              El precio de la gasolina debe cumplir con el formato X.YY. Ejemplo: 4.35
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group mt-3 boton">
-        <button type="submit" class="btn btn-primary" [disabled]="calculadoraForm.invalid">Calcular</button>
-      </div>
-    </form>
-    <div class="row mt-3" *ngIf="resultado">
-      <div class="col-12">
-        <p>Debe pedirle al trabajador de la gasolinera que le ponga {{ resultado }} euros de gasolina/gasoil.</p>
-      </div>
+        <div class="form-group mt-3">
+          <button type="submit" class="btn btn-light" [disabled]="calculadoraForm.invalid">Calcular</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="resultado">
+    <div class="col-12">
+      Debe pedirle al trabajador de la gasolinera que le ponga <b>{{resultado}}</b> euros de gasolina/gasoil.
     </div>
   </div>
 </div>
